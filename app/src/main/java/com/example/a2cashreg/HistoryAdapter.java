@@ -17,7 +17,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
     ArrayList<PurchasedProduct> purchasedProducts;
     Context context;
-    private ItemClickListener clickListener;
+    ItemClickListener clickListener;
 
     HistoryAdapter(ArrayList<PurchasedProduct> listOfProducts, Context context){
         this.purchasedProducts = listOfProducts;
@@ -27,7 +27,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     @NonNull
     @Override
     public HistoryAdapter.HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //View view = LayoutInflater.from(context).inflate(R.layout.base_adapter_row_layout, null);
         View view = LayoutInflater.from(context).inflate(R.layout.base_adapter_row_layout, parent,false);
         return new HistoryViewHolder(view);
     }
@@ -58,10 +57,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
         @Override
         public void onClick(View view) {
-            if (clickListener != null) {
-                Log.d("onClick", "ok");
-                clickListener.onItemClick(view, getAdapterPosition());
-            }
+            clickListener.onItemClick(view, getAdapterPosition());
         }
     }
     public PurchasedProduct getProduct(int i) {
