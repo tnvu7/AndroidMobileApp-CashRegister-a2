@@ -58,11 +58,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         product = ((MyApp)getApplication()).mainProduct;
 
         //orientation changes
-        if (product.getId() != -1){
+        if (product.getType() != null){
             typeText.setText(product.getType());
+            totalText.setText(String.valueOf(((MyApp)getApplication()).quantityBought * product.getPrice()));
+            quantityText.setText(product.getQuantity());
             numberPicker.setMaxValue(product.getQuantity());
             numberPicker.setValue(((MyApp)getApplication()).quantityBought);
-            totalText.setText(String.valueOf(((MyApp)getApplication()).quantityBought * product.getPrice()));
         }
 
         ArrayList<Product> list = ((MyApp)getApplication()).productManager.products;
@@ -75,10 +76,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ((MyApp)getApplication()).mainProduct = (Product) productBaseAdapter.getItem(i);
                 product = ((MyApp)getApplication()).mainProduct;
                 typeText.setText(product.getType());
-                numberPicker.setMaxValue(product.getQuantity());
-                numberPicker.setValue(((MyApp)getApplication()).quantityBought);
                 quantityText.setText(String.valueOf(numberPicker.getValue()));
                 totalText.setText(String.valueOf(numberPicker.getValue() * product.getPrice()));
+                numberPicker.setMaxValue(product.getQuantity());
+                numberPicker.setValue(((MyApp)getApplication()).quantityBought);
             }
         });
 

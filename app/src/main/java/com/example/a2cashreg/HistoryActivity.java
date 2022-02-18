@@ -39,7 +39,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
     @Override
     public void onItemClick(View view, int position) {
         Log.d("OnItemClick", "ok");
-        ((MyApp)getApplication()).boughtProduct = (PurchasedProduct) adapter.getItem(position);
+        ((MyApp)getApplication()).boughtProduct = (PurchasedProduct) adapter.getProduct(position);
         startActivity(new Intent(view.getContext(), HistoryDetail.class));
     }
 }

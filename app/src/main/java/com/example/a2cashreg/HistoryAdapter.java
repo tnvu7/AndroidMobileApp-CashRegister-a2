@@ -64,7 +64,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             }
         }
     }
-    public PurchasedProduct getItem(int i) {
+    public PurchasedProduct getProduct(int i) {
         return purchasedProducts.get(i);
     }
 
