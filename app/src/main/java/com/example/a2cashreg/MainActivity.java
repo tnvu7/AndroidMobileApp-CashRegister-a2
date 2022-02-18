@@ -58,10 +58,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         product = ((MyApp)getApplication()).mainProduct;
 
         //orientation changes
-        if (product.getType() != null){
+        if (product.getId() != -1){
             typeText.setText(product.getType());
             totalText.setText(String.valueOf(((MyApp)getApplication()).quantityBought * product.getPrice()));
-            quantityText.setText(product.getQuantity());
+            quantityText.setText(String.valueOf(((MyApp)getApplication()).quantityBought));
             numberPicker.setMaxValue(product.getQuantity());
             numberPicker.setValue(((MyApp)getApplication()).quantityBought);
         }
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     typeText.setText("Select a type");
                     quantityText.setText("Quantity");
                     totalText.setText("Total");
-                    numberPicker.setMaxValue(0);
+                    numberPicker.setValue(0);
                     ((MyApp)getApplication()).productManager.products.get(product.getId()).updateQty(product.getQuantity() - qtyBought);
                     //refresh listview
                     productBaseAdapter.notifyDataSetChanged();
